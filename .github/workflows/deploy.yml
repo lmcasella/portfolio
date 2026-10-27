@@ -21,7 +21,7 @@ jobs:
               uses: withastro/action@v3
               with:
                   node-version: 22 # Esto fuerza a usar Node 22 y evita el crash de Astro
-                  # package-manager: npm # Descomentá si usás pnpm o yarn
+                  package-manager: npm # Descomentá si usás pnpm o yarn
 
     deploy:
         needs: build
