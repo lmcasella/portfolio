@@ -2,16 +2,26 @@
 const proyectos = [
   {
     title: "Into the Unknown",
-    description: "Roguelike 2D desarrollado en Unity. Enfocado en una arquitectura escalable orientada a eventos para mantener el gameplay y la UI totalmente desacoplados.",
-    tags: ["Unity", "C#", "Event-Driven", "Patrones de Diseño"],
-    linkItch: "https://kezgan.itch.io/",
-    linkGithub: "https://github.com/lmcasella" // Actualizá esto con el link exacto del repo
+    image: "/depths_gameplay.gif", // Poné una captura de pantalla del juego en la carpeta public
+    description: "Roguelike 2D de acción. Arquitectura basada en eventos (Observer) para desacoplar combate y UI, e implementación de IA con Steering Behaviors para múltiples tipos de enemigos.",
+    tags: ["Unity", "C#", "Observer Pattern", "IA"],
+    linkItch: "https://kezgan.itch.io/into-the-unknown",
+    linkGithub: "https://github.com/lmcasella/roguelike-game"
+  },
+  {
+    title: "Star Attack",
+    image: "/starattack_gameplay.gif", // Poné una captura de pantalla del juego en la carpeta public
+    description: "Shoot 'em up 2D con progresión por oleadas. Diseño modular de armamento aplicando el patrón Strategy mediante Scriptable Objects y gestión estricta de memoria (Game Loop).",
+    tags: ["Unity", "C#", "Strategy Pattern", "Scriptable Objects"],
+    linkItch: "https://kezgan.itch.io/star-attack",
+    linkGithub: "https://github.com/lmcasella/star-attack"
   },
   {
     title: "Cyber Survivors",
-    description: "Juego web estilo Bullet Heaven. Implementé un algoritmo propio de Spatial Hashing para optimizar la detección de colisiones de cientos de enemigos simultáneos.",
-    tags: ["PixiJS", "JavaScript", "HTML5", "Spatial Hash"],
-    linkItch: "https://kezgan.itch.io/", // Actualizá si tenés el link exacto
+    image: "/cybersurvivors_gameplay.gif", // Poné una captura de pantalla del juego en la carpeta public
+    description: "Bullet-heaven enfocado en rendimiento web. Implementación desde cero de un algoritmo de Spatial Hashing para detección de colisiones masivas a 60 FPS sin caídas.",
+    tags: ["Pixi.js", "JavaScript", "Spatial Hashing", "State Machine"],
+    linkItch: "https://kezgan.itch.io/cyber-survivors",
     linkGithub: "https://github.com/lmcasella/cyber-survivors"
   }
 ];
@@ -22,29 +32,45 @@ const proyectos = [
         <span class="text-accent font-mono text-xl">01.</span> Proyectos Destacados
     </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Grilla de 3 columnas para pantallas grandes -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {proyectos.map((proyecto) => (
-            <div class="bg-surface p-6 rounded-lg border border-gray-800 hover:border-oxide transition-colors flex flex-col h-full">
-                <h4 class="text-2xl font-bold text-bone mb-3">{proyecto.title}</h4>
-                <p class="text-gray-400 mb-6 grow">{proyecto.description}</p>
+            <div class="bg-surface rounded-xl border border-gray-800 hover:border-accent transition-all overflow-hidden flex flex-col h-full group hover:shadow-[0_0_20px_rgba(37,99,235,0.15)]">
                 
-                <!-- Etiquetas (Tags) -->
-                <div class="flex flex-wrap gap-2 mb-6">
-                    {proyecto.tags.map((tag) => (
-                        <span class="text-xs font-mono text-oxide bg-carbon px-2 py-1 rounded border border-gray-800">
-                            {tag}
-                        </span>
-                    ))}
+                <!-- Imagen del proyecto -->
+                <div class="w-full h-48 bg-carbon overflow-hidden border-b border-gray-800">
+                    <img 
+                        src={proyecto.image} 
+                        alt={`Gameplay de ${proyecto.title}`} 
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                 </div>
 
-                <!-- Botones / Links -->
-                <div class="flex gap-4 mt-auto border-t border-gray-800 pt-4">
-                    <a href={proyecto.linkItch} target="_blank" class="text-sm font-medium text-bone hover:text-oxide transition-colors">
-                        Jugar en Itch.io ↗
-                    </a>
-                    <a href={proyecto.linkGithub} target="_blank" class="text-sm font-medium text-bone hover:text-oxide transition-colors">
-                        Ver Código ↗
-                    </a>
+                <!-- Contenido de la tarjeta -->
+                <div class="p-6 flex flex-col grow">
+                    <h4 class="text-2xl font-bold text-bone mb-3">{proyecto.title}</h4>
+                    <p class="text-gray-400 mb-6 grow text-sm leading-relaxed">
+                        {proyecto.description}
+                    </p>
+                    
+                    <!-- Etiquetas (Tags) -->
+                    <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+                        {proyecto.tags.map((tag) => (
+                            <span class="text-xs font-mono text-accent bg-carbon px-2 py-1 rounded border border-gray-800">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+
+                    <!-- Botones / Links -->
+                    <div class="flex gap-3 mt-4 pt-4 border-t border-gray-800">
+                        <a href={proyecto.linkItch} target="_blank" class="px-4 py-2 text-sm font-medium text-bone border border-gray-700 rounded hover:border-accent hover:text-accent hover:bg-accent/10 transition-all flex items-center gap-2">
+                            Itch.io
+                        </a>
+                        <a href={proyecto.linkGithub} target="_blank" class="px-4 py-2 text-sm font-medium text-bone border border-gray-700 rounded hover:border-accent hover:text-accent hover:bg-accent/10 transition-all flex items-center gap-2">
+                            Código
+                        </a>
+                    </div>
                 </div>
             </div>
         ))}
