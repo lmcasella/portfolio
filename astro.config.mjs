@@ -5,10 +5,12 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://lmcasella.github.io",
+    base: "/portfolio",
     vite: {
         plugins: [tailwindcss()],
     },
     devToolbar: {
-        enabled: false, // Apagar el menú flotante
+        enabled: false,
     },
 });
