@@ -1,12 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <nav
     class="fixed top-0 w-full z-50 bg-carbon/80 backdrop-blur-md border-b border-gray-800"
 >
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <!-- Logo / Nombre -->
         <a
             href="#"
             class="font-bold text-bone text-xl tracking-tighter hover:text-accent transition-colors"
@@ -14,33 +16,45 @@
             LC<span class="text-accent">.</span>
         </a>
 
-        <!-- Links de navegación -->
-        <ul class="hidden md:flex gap-8 text-sm font-mono text-gray-300">
+        <ul
+            class="hidden md:flex items-center gap-8 text-sm font-mono text-gray-300"
+        >
             <li>
                 <a href="#sobre-mi" class="hover:text-accent transition-colors"
-                    >Sobre Mí</a
+                    >{t("nav.about")}</a
                 >
             </li>
             <li>
                 <a href="#proyectos" class="hover:text-accent transition-colors"
-                    >Proyectos</a
+                    >{t("nav.projects")}</a
                 >
             </li>
             <li>
                 <a
                     href="#experiencia"
-                    class="hover:text-accent transition-colors">Experiencia</a
+                    class="hover:text-accent transition-colors"
+                    >{t("nav.experience")}</a
                 >
             </li>
             <li>
                 <a href="#educacion" class="hover:text-accent transition-colors"
-                    >Educación</a
+                    >{t("nav.education")}</a
                 >
             </li>
             <li>
                 <a href="#contacto" class="hover:text-accent transition-colors"
-                    >Contacto</a
+                    >{t("nav.contact")}</a
                 >
+            </li>
+
+            <!-- Botón de Cambio de Idioma -->
+            <li class="ml-4 border-l border-gray-700 pl-6">
+                <a
+                    href={`${import.meta.env.BASE_URL}${lang === "es" ? "/en/" : "/"}`}
+                    class="font-bold text-accent border border-accent px-2 py-1 rounded hover:bg-accent hover:text-carbon transition-all"
+                >
+                    {lang === "es" ? "EN" : "ES"}
+                </a>
             </li>
         </ul>
     </div>

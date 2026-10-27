@@ -1,11 +1,33 @@
 ---
-// Acá definís la ruta de tus 3 archivos (GIFs o MP4s)
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+// 1. Detectamos el idioma actual desde la URL
+const lang = getLangFromUrl(Astro.url);
+// 2. Inicializamos el traductor
+const t = useTranslations(lang);
+
 const backgrounds = [
     "./depths_gameplay.mp4",
     "./cybersurvivors_gameplay.mp4",
     "./starattack_gameplay.mp4",
     "./portal-datos.mp4",
 ];
+
+// Lógica local para el texto largo
+const description =
+    lang === "es"
+        ? "Ingeniería de software aplicada a infraestructuras backend y desarrollo de videojuegos."
+        : "Software engineering applied to backend infrastructures and game development.";
+
+const cvFullStack =
+    lang === "es"
+        ? "CV_LautaroCasella_FullStack_Developer.pdf"
+        : "CV_LautaroCasella_FullStack_Developer.pdf";
+
+const cvGameDev =
+    lang === "es"
+        ? "CV_LautaroCasella_Game_Programmer.pdf"
+        : "CV_LautaroCasella_Game_Programmer_ENG.pdf";
 ---
 
 <section
@@ -52,12 +74,11 @@ const backgrounds = [
             Software Engineer & Game Programmer
         </h2>
 
-        <!-- Una sola línea contundente -->
+        <!-- Descripción dinámica según el idioma -->
         <p
             class="max-w-2xl text-lg text-gray-300 leading-relaxed drop-shadow-md"
         >
-            Ingeniería de software aplicada a infraestructuras backend y
-            desarrollo de videojuegos.
+            {description}
         </p>
 
         <div class="mt-8 flex flex-col items-center gap-6">
@@ -67,7 +88,7 @@ const backgrounds = [
                     href="#proyectos"
                     class="bg-accent hover:bg-[#059669] text-bone px-8 py-4 rounded font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] cursor-pointer"
                 >
-                    Ver Proyectos
+                    {t("ui.viewProjects")}
                 </a>
                 <a
                     href="https://github.com/lmcasella"
@@ -80,9 +101,9 @@ const backgrounds = [
 
             <!-- Descarga de CVs dual -->
             <div class="flex items-center gap-4 text-sm font-mono mt-2">
-                <span class="text-gray-500">Descargar CV:</span>
+                <span class="text-gray-500">{t("ui.downloadCV")}</span>
                 <a
-                    href={`${import.meta.env.BASE_URL}/CV_LautaroCasella_FullStack_Developer.pdf`}
+                    href={`${import.meta.env.BASE_URL}/${cvFullStack}`}
                     target="_blank"
                     class="text-gray-300 hover:text-accent transition-colors border-b border-transparent hover:border-accent"
                 >
@@ -90,7 +111,7 @@ const backgrounds = [
                 </a>
                 <span class="text-gray-700">|</span>
                 <a
-                    href={`${import.meta.env.BASE_URL}/CV_LautaroCasella_Game_Programmer.pdf`}
+                    href={`${import.meta.env.BASE_URL}/${cvGameDev}`}
                     target="_blank"
                     class="text-gray-300 hover:text-accent transition-colors border-b border-transparent hover:border-accent"
                 >
@@ -103,7 +124,6 @@ const backgrounds = [
 
 <!-- Script para la transición automática -->
 <script>
-    // Buscamos ahora etiquetas 'video' en lugar de 'img'
     const videos = document.querySelectorAll("#bg-slider video");
     let currentIndex = 0;
 
@@ -116,6 +136,6 @@ const backgrounds = [
 
             videos[currentIndex].classList.remove("opacity-0");
             videos[currentIndex].classList.add("opacity-100");
-        }, 4000); // 4 segundos por video
+        }, 4000);
     }
 </script>

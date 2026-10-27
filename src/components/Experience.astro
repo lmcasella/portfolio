@@ -1,5 +1,10 @@
 ---
-const jobs = [
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const jobsES = [
   {
     title: "Desarrollador Fullstack",
     company: "Municipalidad de San Martín",
@@ -7,7 +12,7 @@ const jobs = [
     description: [
         "Diseño y desarrollo end-to-end del sistema de Encuestas de Tránsito (MVC). Implementé Background Workers para el despacho automatizado de notificaciones (Email, SMS, WhatsApp) y optimicé el acceso a datos con Dapper y Stored Procedures.",
         "Liderazgo técnico en el ecosistema 'Boleta Digital'. Modernicé el modelo de identidad digital integrando de forma segura APIs de organismos oficiales (AFIP, ANSES, RENAPER).",
-        "Desarrollo de dashboards de gestión con control de acceso por roles, encriptación de datos sensibles y validación robusta por tokens para garantizar la seguridad del sistema."
+        "Desarrollo de dashboards de gestión con control de acceso por roles, encriptación de datos sensibles y validación robusta por tokens para garantizar la seguridad de la infraestructura."
     ],
     tech: ["C#", ".NET", "SQL Server", "ASP.NET MVC", "ASP.NET WebForms", "Dapper", "Background Workers", "Clean Architecture"]
   },
@@ -24,11 +29,39 @@ const jobs = [
     tech: ["Angular", "TypeScript", "SQL"]
   }
 ];
+
+const jobsEN = [
+  {
+    title: "Full Stack Developer",
+    company: "Municipality of San Martin",
+    date: "08/2023 - Present",
+    description: [
+        "End-to-end design and development of the Traffic Surveys system (MVC). Implemented Background Workers for automated notification dispatch (Email, SMS, WhatsApp) and optimized data access using Dapper and Stored Procedures.",
+        "Technical leadership in the 'Boleta Digital' ecosystem. Modernized the digital identity model by securely integrating official government APIs (AFIP, ANSES, RENAPER).",
+        "Developed management dashboards with role-based access control, sensitive data encryption, and robust token validation to ensure infrastructure security."
+    ],
+    tech: ["C#", ".NET", "SQL Server", "ASP.NET MVC", "ASP.NET WebForms", "Dapper", "Background Workers", "Clean Architecture"]
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Municipality of Hurlingham",
+    date: "10/2021 - 12/2022",
+    description: [
+        "Comprehensive development of internal systems for inventory control and operational personnel management.",
+        "Built the frontend and backend using Angular, TypeScript, and relational SQL databases.",
+        "Developed an account verification system using email confirmation, implementing security code validation and designing an OTP-style user interface.",
+        "Participated in the full software development lifecycle operating under SCRUM agile methodologies."
+    ],
+    tech: ["Angular", "TypeScript", "SQL"]
+  }
+];
+
+const jobs = lang === 'es' ? jobsES : jobsEN;
 ---
 
 <section id="experiencia" class="mb-32 scroll-mt-20">
     <h3 class="text-3xl font-bold mb-10 flex items-center gap-3 text-bone">
-        <span class="text-accent font-mono text-xl">02.</span> Experiencia Profesional
+        <span class="text-accent font-mono text-xl">02.</span> {t('nav.experience')}
     </h3>
 
     <!-- Contenedor de la línea de tiempo -->

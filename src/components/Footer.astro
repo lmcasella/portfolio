@@ -1,4 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const email = "lautaromcasella@gmail.com";
 const linkedin = "https://www.linkedin.com/in/lautaro-casella-b990a6216/";
 const github = "https://github.com/lmcasella";
@@ -12,11 +17,10 @@ const itch = "https://kezgan.itch.io/";
         <!-- Llamado a la acción -->
         <div class="text-center md:text-left">
             <h3 class="text-2xl font-bold text-bone mb-2">
-                ¿Trabajamos juntos?
+                {t("footer.title")}
             </h3>
             <p class="text-gray-400 mb-6 max-w-sm">
-                Actualmente busco nuevos desafíos técnicos donde pueda aportar
-                mi experiencia en sistemas y desarrollo de videojuegos.
+                {t("footer.desc")}
             </p>
             <!-- Formulario de Contacto -->
             <div class="w-full max-w-md mt-8 md:mt-0">
@@ -29,28 +33,28 @@ const itch = "https://kezgan.itch.io/";
                         type="text"
                         name="name"
                         required
-                        placeholder="Tu nombre"
+                        placeholder={t("footer.name")}
                         class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                     />
                     <input
                         type="email"
                         name="email"
                         required
-                        placeholder="Tu correo electrónico"
+                        placeholder={t("footer.email")}
                         class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                     />
                     <textarea
                         name="message"
                         required
                         rows="4"
-                        placeholder="Mensaje"
+                        placeholder={t("footer.msg")}
                         class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none"
                     ></textarea>
                     <button
                         type="submit"
                         class="bg-accent hover:bg-[#059669] text-carbon font-bold px-6 py-3 rounded transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] mt-2"
                     >
-                        Enviar Mensaje
+                        {t("footer.send")}
                     </button>
                 </form>
             </div>
@@ -59,7 +63,7 @@ const itch = "https://kezgan.itch.io/";
         <!-- Enlaces -->
         <div class="flex flex-col items-center md:items-end gap-4">
             <h4 class="font-mono text-accent text-sm uppercase tracking-widest">
-                Enlaces
+                {t("footer.links")}
             </h4>
             <div class="flex gap-6">
                 <a
@@ -93,10 +97,12 @@ const itch = "https://kezgan.itch.io/";
             class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4"
         >
             <p class="text-gray-500 text-sm">
-                © {new Date().getFullYear()} Lautaro Casella. Todos los derechos reservados.
+                © {new Date().getFullYear()} Lautaro Casella. {
+                    t("footer.rights")
+                }
             </p>
             <p class="text-gray-600 font-mono text-xs">
-                Construido con Astro & Tailwind CSS
+                {t("footer.built")}
             </p>
         </div>
     </div>

@@ -1,5 +1,8 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -10,7 +13,8 @@
         <!-- Título -->
         <div class="md:col-span-4">
             <h3 class="text-3xl font-bold flex items-center gap-3 text-bone">
-                <span class="text-accent font-mono text-xl">00.</span> Sobre Mí
+                <span class="text-accent font-mono text-xl">00.</span>
+                {t("nav.about")}
             </h3>
         </div>
 
@@ -18,32 +22,75 @@
         <div
             class="md:col-span-8 text-gray-400 text-lg leading-relaxed space-y-6"
         >
-            <p>
-                Actualmente me desempeño como <strong
-                    class="text-bone font-medium"
-                    >Desarrollador Fullstack</strong
-                > en la Municipalidad de San Martín, donde mantengo y escalo ecosistemas
-                gubernamentales bajo entornos <strong
-                    class="text-accent font-medium">.NET y SQL Server</strong
-                >.
-            </p>
-            <p>
-                En paralelo, curso la Licenciatura en Programación de
-                Videojuegos y Simulaciones en la UNAHUR. Mi interés por el Game
-                Dev nace de la motivación de unir la creatividad del Game Design
-                con el desafío técnico de la programación. Al llevar mi base de
-                desarrollo tradicional a Unity, me enfoco en aplicar patrones de
-                diseño reales, mantener el código limpio y asegurar que la
-                arquitectura soporte el crecimiento del proyecto de manera
-                segura.
-            </p>
-            <p>
-                Acostumbrado a manejar la lógica del backend y a optimizar el
-                rendimiento de sistemas, aplico esa misma mentalidad
-                estructurada para programar IA, diseñar sistemas de combate o
-                crear algoritmos de colisión eficientes en mis proyectos
-                independientes.
-            </p>
+            {
+                lang === "es" ? (
+                    <>
+                        <p>
+                            Actualmente me desempeño como{" "}
+                            <strong class="text-bone font-medium">
+                                Desarrollador Fullstack
+                            </strong>{" "}
+                            en la Municipalidad de San Martín, donde mantengo y
+                            escalo ecosistemas gubernamentales bajo entornos{" "}
+                            <strong class="text-accent font-medium">
+                                .NET y SQL Server
+                            </strong>
+                            .
+                        </p>
+                        <p>
+                            En paralelo, curso la Licenciatura en Programación
+                            de Videojuegos y Simulaciones en la UNAHUR. Mi
+                            interés por el Game Dev nace de la motivación de
+                            unir la creatividad del Game Design con el desafío
+                            técnico de la programación. Al llevar mi base de
+                            desarrollo tradicional a Unity, me enfoco en aplicar
+                            patrones de diseño reales, mantener el código limpio
+                            y asegurar que la arquitectura soporte el
+                            crecimiento del proyecto de manera segura.
+                        </p>
+                        <p>
+                            Acostumbrado a manejar la lógica del backend y a
+                            optimizar el rendimiento de sistemas, aplico esa
+                            misma mentalidad estructurada para programar IA,
+                            diseñar sistemas de combate o crear algoritmos de
+                            colisión eficientes en mis proyectos independientes.
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <p>
+                            I currently work as a{" "}
+                            <strong class="text-bone font-medium">
+                                Full Stack Developer
+                            </strong>{" "}
+                            at the Municipality of San Martín, where I maintain
+                            and scale government ecosystems using{" "}
+                            <strong class="text-accent font-medium">
+                                .NET and SQL Server
+                            </strong>
+                            .
+                        </p>
+                        <p>
+                            At the same time, I am pursuing a Bachelor's Degree
+                            in Video Game Programming and Simulations at UNAHUR.
+                            My interest in Game Dev stems from the motivation to
+                            bridge the creativity of Game Design with the
+                            technical challenges of programming. By bringing my
+                            traditional software engineering background into
+                            Unity, I focus on applying real-world design
+                            patterns, writing clean code, and ensuring the
+                            architecture safely supports the project's growth.
+                        </p>
+                        <p>
+                            Accustomed to handling backend logic and optimizing
+                            system performance, I apply that same structured
+                            mindset to program AI, design combat systems, or
+                            create efficient collision algorithms in my
+                            independent projects.
+                        </p>
+                    </>
+                )
+            }
         </div>
     </div>
 </section>

@@ -1,5 +1,10 @@
 ---
-const education = [
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const educationES = [
     {
         degree: "Licenciatura en Programación de Videojuegos y Simulaciones",
         institution: "Universidad Nacional de Hurlingham (UNAHUR)",
@@ -13,11 +18,46 @@ const education = [
         status: "Finalizada",
     },
 ];
+
+const educationEN = [
+    {
+        degree: "Bachelor's Degree in Video Game Programming and Simulations",
+        institution: "Universidad Nacional de Hurlingham (UNAHUR)",
+        date: "2024 - Present",
+        status: "In progress",
+    },
+    {
+        degree: "University Technician in Computer Science",
+        institution: "Universidad Nacional de Hurlingham (UNAHUR)",
+        date: "2018 - 2023",
+        status: "Completed",
+    },
+];
+
+// Seleccionamos el array correcto según el idioma
+const education = lang === "es" ? educationES : educationEN;
+
+// Lógica local para la sección extra
+const extras = {
+    title: lang === "es" ? "Idiomas & Complementos" : "Languages & Extras",
+    description:
+        lang === "es"
+            ? "Habilidades adicionales que complementan mi perfil técnico."
+            : "Additional skills that complement my technical profile.",
+    badges:
+        lang === "es"
+            ? ["Inglés B2 (Intermedio-Alto)", "Metodologías Ágiles (Scrum)"]
+            : [
+                  "English B2 (Upper-Intermediate)",
+                  "Agile Methodologies (Scrum)",
+              ],
+};
 ---
 
 <section id="educacion" class="mb-32 scroll-mt-20">
     <h3 class="text-3xl font-bold mb-10 flex items-center gap-3 text-bone">
-        <span class="text-accent font-mono text-xl">03.</span> Formación Académica
+        <span class="text-accent font-mono text-xl">03.</span>
+        {t("nav.education")}
     </h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -47,23 +87,20 @@ const education = [
     >
         <div>
             <h4 class="text-lg font-bold text-bone mb-1">
-                Idiomas & Complementos
+                {extras.title}
             </h4>
             <p class="text-gray-400 text-sm">
-                Habilidades adicionales que complementan mi perfil técnico.
+                {extras.description}
             </p>
         </div>
         <div class="flex flex-wrap gap-3">
-            <span
-                class="text-sm font-mono text-bone bg-carbon px-3 py-1.5 rounded border border-gray-700"
-            >
-                Inglés B2 (Intermedio-Alto)
-            </span>
-            <span
-                class="text-sm font-mono text-bone bg-carbon px-3 py-1.5 rounded border border-gray-700"
-            >
-                Metodologías Ágiles (Scrum)
-            </span>
+            {
+                extras.badges.map((badge) => (
+                    <span class="text-sm font-mono text-bone bg-carbon px-3 py-1.5 rounded border border-gray-700">
+                        {badge}
+                    </span>
+                ))
+            }
         </div>
     </div>
 </section>

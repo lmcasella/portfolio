@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Bio from "../../components/Bio.astro";
+import Projects from "../../components/Projects.astro";
+import Experience from "../../components/Experience.astro";
+import Education from "../../components/Education.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Lautaro Casella | Software Engineer & Game Developer">
+    <!-- El Hero ahora está suelto para ocupar todo el ancho -->
+    <Hero />
+
+    <!-- El resto del contenido sigue centrado -->
+    <main class="max-w-5xl mx-auto px-6 py-24">
+        <Bio />
+        <Projects />
+        <Experience />
+        <Education />
+    </main>
+
+    <Footer />
+</Layout>
