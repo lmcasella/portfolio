@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
     push:
-        branches: [main] # Cambiá 'main' por 'master' si tu rama principal se llama así
+        branches: [main] # Cambiá a 'master' si usás esa rama
     workflow_dispatch:
 
 permissions:
@@ -16,10 +16,12 @@ jobs:
         steps:
             - name: Checkout your repository using git
               uses: actions/checkout@v4
+
             - name: Install, build, and upload your site
               uses: withastro/action@v3
-              # with:
-              # package-manager: npm # Descomentá esto si usás pnpm o yarn cambiando el nombre
+              with:
+                  node-version: 22 # Esto fuerza a usar Node 22 y evita el crash de Astro
+                  # package-manager: npm # Descomentá si usás pnpm o yarn
 
     deploy:
         needs: build
