@@ -1,0 +1,97 @@
+---
+// Acá definís la ruta de tus 3 archivos (GIFs o MP4s)
+const backgrounds = [
+    "/depths_gameplay.mp4",
+    "/cybersurvivors_gameplay.mp4",
+    "/starattack_gameplay.mp4",
+];
+---
+
+<section
+    class="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden"
+>
+    <!-- Contenedor de los videos iterables -->
+    <div id="bg-slider" class="absolute inset-0 w-full h-full -z-20 bg-carbon">
+        {
+            backgrounds.map((bg, index) => (
+                <video
+                    src={bg}
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === 0 ? "opacity-100" : "opacity-0"}`}
+                    data-index={index}
+                />
+            ))
+        }
+    </div>
+
+    <!-- Filtro oscuro/degradado para leer el texto -->
+    <div class="absolute inset-0 bg-carbon/80 -z-10"></div>
+    <div
+        class="absolute inset-0 bg-linear-to-t from-carbon to-transparent -z-10"
+    >
+    </div>
+
+    <!-- Contenido (Texto centrado) -->
+    <div
+        class="relative z-10 px-6 max-w-4xl flex flex-col items-center gap-6 mt-16 text-center"
+    >
+        <h1
+            class="text-6xl md:text-8xl font-black tracking-tighter text-bone drop-shadow-xl uppercase"
+        >
+            Lautaro Casella
+        </h1>
+
+        <!-- Doble rol claro y directo -->
+        <h2
+            class="text-2xl md:text-3xl font-mono text-accent font-semibold tracking-wide drop-shadow-md"
+        >
+            Software Engineer & Game Programmer
+        </h2>
+
+        <!-- Una sola línea contundente -->
+        <p
+            class="max-w-2xl text-lg text-gray-300 leading-relaxed drop-shadow-md"
+        >
+            Ingeniería de software aplicada a infraestructuras backend y
+            desarrollo de videojuegos.
+        </p>
+
+        <div class="mt-8 flex gap-6">
+            <a
+                href="#proyectos"
+                class="bg-accent hover:bg-blue-700 text-bone px-8 py-4 rounded font-bold transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_25px_rgba(37,99,235,0.6)] cursor-pointer"
+            >
+                Ver Proyectos
+            </a>
+            <a
+                href="https://github.com/lmcasella"
+                target="_blank"
+                class="border-2 border-gray-400 hover:border-bone hover:text-bone text-gray-300 px-8 py-4 rounded font-bold transition-all backdrop-blur-sm bg-carbon/50 cursor-pointer"
+            >
+                GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Script para la transición automática -->
+<script>
+    // Buscamos ahora etiquetas 'video' en lugar de 'img'
+    const videos = document.querySelectorAll("#bg-slider video");
+    let currentIndex = 0;
+
+    if (videos.length > 1) {
+        setInterval(() => {
+            videos[currentIndex].classList.remove("opacity-100");
+            videos[currentIndex].classList.add("opacity-0");
+
+            currentIndex = (currentIndex + 1) % videos.length;
+
+            videos[currentIndex].classList.remove("opacity-0");
+            videos[currentIndex].classList.add("opacity-100");
+        }, 4000); // 4 segundos por video
+    }
+</script>

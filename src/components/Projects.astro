@@ -1,0 +1,52 @@
+---
+const proyectos = [
+  {
+    title: "Into the Unknown",
+    description: "Roguelike 2D desarrollado en Unity. Enfocado en una arquitectura escalable orientada a eventos para mantener el gameplay y la UI totalmente desacoplados.",
+    tags: ["Unity", "C#", "Event-Driven", "Patrones de Diseño"],
+    linkItch: "https://kezgan.itch.io/",
+    linkGithub: "https://github.com/lmcasella" // Actualizá esto con el link exacto del repo
+  },
+  {
+    title: "Cyber Survivors",
+    description: "Juego web estilo Bullet Heaven. Implementé un algoritmo propio de Spatial Hashing para optimizar la detección de colisiones de cientos de enemigos simultáneos.",
+    tags: ["PixiJS", "JavaScript", "HTML5", "Spatial Hash"],
+    linkItch: "https://kezgan.itch.io/", // Actualizá si tenés el link exacto
+    linkGithub: "https://github.com/lmcasella/cyber-survivors"
+  }
+];
+---
+
+<section id="proyectos" class="mb-32 scroll-mt-20">
+    <h3 class="text-3xl font-bold mb-10 flex items-center gap-3 text-bone">
+        <span class="text-accent font-mono text-xl">01.</span> Proyectos Destacados
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {proyectos.map((proyecto) => (
+            <div class="bg-surface p-6 rounded-lg border border-gray-800 hover:border-oxide transition-colors flex flex-col h-full">
+                <h4 class="text-2xl font-bold text-bone mb-3">{proyecto.title}</h4>
+                <p class="text-gray-400 mb-6 grow">{proyecto.description}</p>
+                
+                <!-- Etiquetas (Tags) -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {proyecto.tags.map((tag) => (
+                        <span class="text-xs font-mono text-oxide bg-carbon px-2 py-1 rounded border border-gray-800">
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+
+                <!-- Botones / Links -->
+                <div class="flex gap-4 mt-auto border-t border-gray-800 pt-4">
+                    <a href={proyecto.linkItch} target="_blank" class="text-sm font-medium text-bone hover:text-oxide transition-colors">
+                        Jugar en Itch.io ↗
+                    </a>
+                    <a href={proyecto.linkGithub} target="_blank" class="text-sm font-medium text-bone hover:text-oxide transition-colors">
+                        Ver Código ↗
+                    </a>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

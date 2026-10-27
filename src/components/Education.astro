@@ -1,0 +1,69 @@
+---
+const education = [
+    {
+        degree: "Licenciatura en Programación de Videojuegos y Simulaciones",
+        institution: "Universidad Nacional de Hurlingham (UNAHUR)",
+        date: "2024 - Presente",
+        status: "En curso",
+    },
+    {
+        degree: "Tecnicatura Universitaria en Informática",
+        institution: "Universidad Nacional de Hurlingham (UNAHUR)",
+        date: "2018 - 2023",
+        status: "Finalizada",
+    },
+];
+---
+
+<section id="educacion" class="mb-32 scroll-mt-20">
+    <h3 class="text-3xl font-bold mb-10 flex items-center gap-3 text-bone">
+        <span class="text-accent font-mono text-xl">03.</span> Formación Académica
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {
+            education.map((item) => (
+                <div class="bg-carbon border border-gray-800 p-6 rounded-lg hover:border-gray-600 transition-colors">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="bg-surface text-accent font-mono text-xs px-2 py-1 rounded border border-gray-700">
+                            {item.status}
+                        </span>
+                        <span class="text-gray-500 font-mono text-sm">
+                            {item.date}
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-bold text-bone mb-2">
+                        {item.degree}
+                    </h4>
+                    <p class="text-gray-400">{item.institution}</p>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Sección extra para Idiomas y Certificaciones clave -->
+    <div
+        class="bg-surface border border-gray-800 p-6 rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4"
+    >
+        <div>
+            <h4 class="text-lg font-bold text-bone mb-1">
+                Idiomas & Complementos
+            </h4>
+            <p class="text-gray-400 text-sm">
+                Habilidades adicionales que complementan mi perfil técnico.
+            </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+            <span
+                class="text-sm font-mono text-bone bg-carbon px-3 py-1.5 rounded border border-gray-700"
+            >
+                Inglés B2 (Intermedio-Alto)
+            </span>
+            <span
+                class="text-sm font-mono text-bone bg-carbon px-3 py-1.5 rounded border border-gray-700"
+            >
+                Metodologías Ágiles (Scrum)
+            </span>
+        </div>
+    </div>
+</section>

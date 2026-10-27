@@ -1,0 +1,73 @@
+---
+const email = "lautaromcasella@gmail.com";
+const linkedin = "https://www.linkedin.com/in/lautaro-casella-b990a6216/";
+const github = "https://github.com/lmcasella";
+const itch = "https://kezgan.itch.io/";
+---
+
+<footer id="contacto" class="border-t border-gray-800 bg-surface mt-20">
+    <div
+        class="max-w-5xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center md:items-start gap-8"
+    >
+        <!-- Llamado a la acción -->
+        <div class="text-center md:text-left">
+            <h3 class="text-2xl font-bold text-bone mb-2">
+                ¿Trabajamos juntos?
+            </h3>
+            <p class="text-gray-400 mb-6 max-w-sm">
+                Actualmente busco nuevos desafíos técnicos donde pueda aportar
+                mi experiencia en sistemas y desarrollo de videojuegos.
+            </p>
+            <a
+                href={`mailto:${email}`}
+                class="inline-block bg-accent hover:bg-blue-600 text-carbon font-bold px-6 py-3 rounded transition-colors"
+            >
+                Enviar un correo
+            </a>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex flex-col items-center md:items-end gap-4">
+            <h4 class="font-mono text-accent text-sm uppercase tracking-widest">
+                Enlaces
+            </h4>
+            <div class="flex gap-6">
+                <a
+                    href={linkedin}
+                    target="_blank"
+                    class="text-gray-400 hover:text-accent transition-colors font-medium"
+                >
+                    LinkedIn
+                </a>
+                <a
+                    href={github}
+                    target="_blank"
+                    class="text-gray-400 hover:text-accent transition-colors font-medium"
+                >
+                    GitHub
+                </a>
+                <a
+                    href={itch}
+                    target="_blank"
+                    class="text-gray-400 hover:text-accent transition-colors font-medium"
+                >
+                    Itch.io
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright / Créditos -->
+    <div class="border-t border-gray-800">
+        <div
+            class="max-w-5xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+            <p class="text-gray-500 text-sm">
+                © {new Date().getFullYear()} Lautaro Casella. Todos los derechos reservados.
+            </p>
+            <p class="text-gray-600 font-mono text-xs">
+                Construido con Astro & Tailwind CSS
+            </p>
+        </div>
+    </div>
+</footer>
