@@ -18,12 +18,42 @@ const itch = "https://kezgan.itch.io/";
                 Actualmente busco nuevos desafíos técnicos donde pueda aportar
                 mi experiencia en sistemas y desarrollo de videojuegos.
             </p>
-            <a
-                href="mailto:lautaromcasella@gmail.com"
-                class="inline-block bg-accent hover:bg-[#059669] text-carbon font-bold px-6 py-3 rounded transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)]"
-            >
-                Enviar un correo
-            </a>
+            <!-- Formulario de Contacto -->
+            <div class="w-full max-w-md mt-8 md:mt-0">
+                <form
+                    action="https://formspree.io/f/lautaromcasella@gmail.com"
+                    method="POST"
+                    class="flex flex-col gap-4"
+                >
+                    <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Tu nombre"
+                        class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="Tu correo electrónico"
+                        class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
+                    />
+                    <textarea
+                        name="message"
+                        required
+                        rows="4"
+                        placeholder="¿En qué te puedo ayudar?"
+                        class="w-full bg-carbon border border-gray-800 rounded px-4 py-3 text-bone focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none"
+                    ></textarea>
+                    <button
+                        type="submit"
+                        class="bg-accent hover:bg-[#059669] text-carbon font-bold px-6 py-3 rounded transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] mt-2"
+                    >
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
         </div>
 
         <!-- Enlaces -->
