@@ -7,10 +7,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const backgrounds = [
-    "./depths_gameplay.mp4",
-    "./cybersurvivors_gameplay.mp4",
-    "./starattack_gameplay.mp4",
-    "./portal-datos.mp4",
+    `${import.meta.env.BASE_URL}/depths_gameplay.mp4`,
+    `${import.meta.env.BASE_URL}/cybersurvivors_gameplay.mp4`,
+    `${import.meta.env.BASE_URL}/starattack_gameplay.mp4`,
+    `${import.meta.env.BASE_URL}/portal-datos.mp4`,
 ];
 
 // Lógica local para el texto largo

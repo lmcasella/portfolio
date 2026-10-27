@@ -92,7 +92,7 @@ const proyectos = lang === 'es' ? proyectosES : proyectosEN;
                 <!-- Imagen del proyecto -->
                 <div class="w-full aspect-video bg-carbon overflow-hidden border-b border-gray-800 relative">
                     <img 
-                        src={proyecto.image} 
+                        src={`${import.meta.env.BASE_URL}${proyecto.image.replace('./', '/')}`} 
                         alt={`Preview de ${proyecto.title}`} 
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
