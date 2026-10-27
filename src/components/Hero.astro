@@ -60,20 +60,43 @@ const backgrounds = [
             desarrollo de videojuegos.
         </p>
 
-        <div class="mt-8 flex gap-6">
-            <a
-                href="#proyectos"
-                class="bg-accent hover:bg-[#059669] text-bone px-8 py-4 rounded font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] cursor-pointer"
-            >
-                Ver Proyectos
-            </a>
-            <a
-                href="https://github.com/lmcasella"
-                target="_blank"
-                class="border-2 border-gray-400 hover:border-bone hover:text-bone text-gray-300 px-8 py-4 rounded font-bold transition-all backdrop-blur-sm bg-carbon/50 cursor-pointer"
-            >
-                GitHub
-            </a>
+        <div class="mt-8 flex flex-col items-center gap-6">
+            <!-- Botones principales -->
+            <div class="flex gap-6">
+                <a
+                    href="#proyectos"
+                    class="bg-accent hover:bg-[#059669] text-bone px-8 py-4 rounded font-bold transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)] cursor-pointer"
+                >
+                    Ver Proyectos
+                </a>
+                <a
+                    href="https://github.com/lmcasella"
+                    target="_blank"
+                    class="border-2 border-gray-400 hover:border-bone hover:text-bone text-gray-300 px-8 py-4 rounded font-bold transition-all backdrop-blur-sm bg-carbon/50 cursor-pointer"
+                >
+                    GitHub
+                </a>
+            </div>
+
+            <!-- Descarga de CVs dual -->
+            <div class="flex items-center gap-4 text-sm font-mono mt-2">
+                <span class="text-gray-500">Descargar CV:</span>
+                <a
+                    href="/CV_LautaroCasella_FullStack_Developer.pdf"
+                    target="_blank"
+                    class="text-gray-300 hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+                >
+                    Fullstack
+                </a>
+                <span class="text-gray-700">|</span>
+                <a
+                    href="/CV_LautaroCasella_Game_Programmer.pdf"
+                    target="_blank"
+                    class="text-gray-300 hover:text-accent transition-colors border-b border-transparent hover:border-accent"
+                >
+                    Game Dev
+                </a>
+            </div>
         </div>
     </div>
 </section>
