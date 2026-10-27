@@ -10,7 +10,7 @@ export const ui = {
         // UI General
         "ui.viewProjects": "Ver Proyectos",
         "ui.downloadCV": "Descargar CV:",
-        "ui.code": "Código ↗",
+        "ui.code": "Código",
 
         // Footer
         "footer.title": "¿Trabajamos juntos?",
@@ -35,7 +35,7 @@ export const ui = {
         // UI General
         "ui.viewProjects": "View Projects",
         "ui.downloadCV": "Download CV:",
-        "ui.code": "Source Code ↗",
+        "ui.code": "Source Code",
 
         // Footer
         "footer.title": "Let's work together?",
